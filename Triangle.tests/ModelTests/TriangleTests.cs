@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Triangle;
+using Triangle.Model;
 
 namespace Triangle.Test
 {
@@ -7,25 +7,33 @@ namespace Triangle.Test
   public class TriangleTests
   {
     [TestMethod]
-    public void IsTriangle_AIsGreaterThanBPlusC_True()
+    public void TriangleType_IfAllSidesAreEqual_Equilateral()
     {
-      Triangle testTriangle = new Triangle();
-      Assert.AreEqual(true, testTriangle.IsTriangle(1, 1, 1));
+      TriangleCheck testTriangle = new TriangleCheck();
+      Assert.AreEqual("Equilateral", testTriangle.TriangleType(1, 1, 1));
     }
+
+    [TestMethod]
+    public void TriangleType_IfTwoSidesAreEqual_Isosceles()
+    {
+      TriangleCheck testTriangle = new TriangleCheck();
+      Assert.AreEqual("Isosceles", testTriangle.TriangleType(2, 2, 3));
+    }
+
+    [TestMethod]
+    public void TriangleType_OneSideIsGreaterThanSumOfTwoOtherSides_NotATriangle()
+    {
+      TriangleCheck testTriangle = new TriangleCheck();
+      Assert.AreEqual("Not a triangle.", testTriangle.TriangleType(1, 2, 4));
+    }
+
+    [TestMethod]
+    public void TriangleType_IfNoSidesAreEqual_Scalene()
+    {
+      TriangleCheck testTriangle = new TriangleCheck();
+      Assert.AreEqual("Scalene", testTriangle.TriangleType(1, 2, 3));
+    }
+
+  
   }
 }
-  // public void IsLeapYear_NumberDivisibleByFour_True()
-  //   {
-  //     LeapYear testLeapYear = new LeapYear();
-  //     Assert.AreEqual(true, testLeapYear.IsLeapYear(2012));
-  //   }
-...
-
-// [TestMethod]
-// public void NameOfMethodWeAreTesting_DescriptionOfBehavior_ExpectedReturnValue()
-// {
-//   // any necessary logic to prep for test; instantiating new classes, etc.
-//   Assert.AreEqual(EXPECTED RESULT, CODE TO TEST);
-// }
-
-// ...

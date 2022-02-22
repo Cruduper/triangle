@@ -1,12 +1,21 @@
 
-namespace Triangle 
+namespace Triangle.Model 
 {
   public class TriangleCheck
   {
-    public bool IsTriangle(int a, int b, int c)
+    public static string TriangleType(int a, int b, int c)
     {
-      // logic will go here
-      return false;
+      if ((a == b) && (b == c)){
+        return "Equilateral";
+      } else if ((a == b) || (b == c) || (c == a)){
+        return "Isosceles";
+      } else if ((a > b + c) || (b > c + a) || (c > a + b)) {
+        return "Not a triangle.";
+      } else if ((a != b) && (b != c) && (a != c)){
+        return "Scalene";
+      } else {
+        return "YOU DONE MESSED UP SON";
+      }
     }
   }
 }
